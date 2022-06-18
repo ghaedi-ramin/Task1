@@ -17,7 +17,14 @@ public class DataStore {
     }
 
     public static void deletePerson(Person person){
-        personList.remove(person);
+
+        for (int i = 0; i <personList.size() ; i++) {
+
+            if (personList.get(i).getName().equals(person.getName()) &&
+                    personList.get(i).getLastName().equals(person.getLastName())){
+                personList.remove(i);
+            }
+        }
     }
 
     public static List<Person> findAll(){
