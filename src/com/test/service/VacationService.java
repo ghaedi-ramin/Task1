@@ -27,7 +27,7 @@ public class VacationService {
 
         VacationDao vacationDao = new VacationDao();
         for (Vacation v : vacationDao.findAll()) {
-            System.out.println(v.getDate() + " " +v.getDuration() + " " + v.getPerson().getPersonId() + " "+ v.getPerson().getName() + " " + v.getPerson().getLastName()+" "+ Vacation.VacationState.UNCHECK);
+            System.out.println(v.getDate() + " " +v.getDuration() + " " + v.getPerson().getPersonId() + " "+ v.getPerson().getName() + " " + v.getPerson().getLastName());
         }
     }
 }
