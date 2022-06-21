@@ -20,21 +20,30 @@ public class DataStore {
 
         for (int i = 0; i <personList.size() ; i++) {
 
-            if (personList.get(i).getName().equals(person.getName()) &&
-                    personList.get(i).getLastName().equals(person.getLastName())){
+            if (personList.get(i).getPersonId()==(person.getPersonId()))
                 personList.remove(i);
-            }
+
         }
     }
 
     public static List<Person> findAll(){
+
         return personList;
     }
+
+//public static List<Person> findByFamily(){
+//        return personList;
+//}
+//
+//public static List<Person> findById(int id){
+//
+//        return personList;
+//}
 
     public static void AddVacation(Vacation vacation){
         vacationList.add(vacation);
     }
-    public static List<Vacation> findAll_Vacation(){
+    public static List<Vacation> findAllVacation(){
         return vacationList;
     }
 }

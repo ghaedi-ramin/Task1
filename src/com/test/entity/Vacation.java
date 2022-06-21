@@ -7,7 +7,9 @@ public class Vacation {
     private LocalDate date;
     private int duration;
     private Person person;
-
+    private enum state{
+        CONFIRMED,UNCONFIRMED,UNCHECKED
+    }
     public Vacation(LocalDate date, int duration, Person person) {
         this.date = date;
         this.duration = duration;
