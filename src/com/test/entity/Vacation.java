@@ -4,16 +4,31 @@ import java.time.LocalDate;
 
 public class Vacation {
 
+    public enum VacationState{
+
+        UNCHECK(0),CONFIRMED(1),UNCONFIRMED(2);
+
+        public int getState() {
+            return state;
+        }
+
+        private int state;
+
+        VacationState(int i) {
+            this.state=i;
+        }
+    }
+
     private LocalDate date;
     private int duration;
     private Person person;
-    private enum state{
-        CONFIRMED,UNCONFIRMED,UNCHECKED
-    }
+
+
     public Vacation(LocalDate date, int duration, Person person) {
         this.date = date;
         this.duration = duration;
         this.person = person;
+
     }
 
     public LocalDate getDate() {

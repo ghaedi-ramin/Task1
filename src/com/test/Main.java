@@ -99,10 +99,13 @@ public class Main {
                 String name = scanner.next();
                 System.out.println("enter family : ");
                 String family = scanner.next();
+
+                Person person = new Person(id,name,family);
+
                 System.out.println("enter duration : ");
                 int duration = scanner.nextInt();
 
-                Person person = new Person(id,name,family);
+
 
                 System.out.println("enter year : ");
                 int year = scanner.nextInt();
