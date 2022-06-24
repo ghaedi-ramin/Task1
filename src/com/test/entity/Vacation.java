@@ -1,34 +1,29 @@
 package com.test.entity;
 
+import com.test.dao.VacationDao;
+
 import java.time.LocalDate;
 
 public class Vacation {
-//
-//    public enum VacationState{
-//
-//        UNCHECK(0),CONFIRMED(1),UNCONFIRMED(2);
-//
-//        public int getState() {
-//            return state;
-//        }
-//
-//        private int state;
-//
-//        VacationState(int i) {
-//            this.state=i;
-//        }
-//    }
+
+    public enum VacationState{
+
+        UNCHECK,CONFIRMED,UNCONFIRMED;
+
+
+
+    }
 
     private LocalDate date;
     private int duration;
     private Person person;
+    private VacationState state;
 
-
-
-    public Vacation(LocalDate date, int duration, Person person) {
+    public Vacation(LocalDate date, int duration, Person person , VacationState vacationState) {
         this.date = date;
         this.duration = duration;
         this.person = person;
+        this.state = vacationState;
 
     }
 
@@ -54,5 +49,13 @@ public class Vacation {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public VacationState getState() {
+        return state;
+    }
+
+    public void setState(VacationState state) {
+        this.state = state;
     }
 }

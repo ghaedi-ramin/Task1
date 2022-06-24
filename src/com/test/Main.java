@@ -13,8 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
         Scanner scanner = new Scanner(System.in);
         do {
 
@@ -54,7 +52,6 @@ public class Main {
                 personService.createPerson(person);
 
             }
-
             else if (option == 3) {
 
                 System.out.println("enter id : ");
@@ -90,43 +87,76 @@ public class Main {
                     }
             }
 
-            else if (option == 5){
+            else if (option == 5) {
 
                 System.out.println("enter id : ");
                 int id = scanner.nextInt();
+                String name = null;
+                String family = null;
 
-                System.out.println("enter name : ");
-                String name = scanner.next();
-                System.out.println("enter family : ");
-                String family = scanner.next();
+                try {
+                    PersonService personService1 = new PersonService();
+                    personService1.getNameFamily(id);
 
-                Person person = new Person(id,name,family);
+                    Person person = personService1.getNameFamily(id);
+                    name = person.getName();
+                    family = person.getLastName();
 
-                System.out.println("enter duration : ");
-                int duration = scanner.nextInt();
+                    Person person1 = new Person(id, name, family);
+                    Vacation.VacationState vacationState = Vacation.VacationState.UNCHECK;
 
+                    System.out.println("enter duration : ");
+                    int duration = scanner.nextInt();
+                    System.out.println("enter year : ");
+                    int year = scanner.nextInt();
+                    System.out.println("enter month : ");
+                    int month = scanner.nextInt();
+                    System.out.println("enter day : ");
+                    int day = scanner.nextInt();
 
+                    LocalDate localDate = LocalDate.of(year, month, day);
 
-                System.out.println("enter year : ");
-                int year = scanner.nextInt();
-                System.out.println("enter month : ");
-                int month = scanner.nextInt();
-                System.out.println("enter day : ");
-                int day = scanner.nextInt();
+                    Vacation vacation = new Vacation(localDate, duration, person1 , vacationState);
+                    VacationService vacationService = new VacationService();
+                    vacationService.createVacation(vacation);
+                    System.out.println("vacation added");
+                }
 
-                LocalDate localDate = LocalDate.of(year, month, day);
-
-                Vacation vacation = new Vacation(localDate,duration,person);
-                VacationService vacationService = new VacationService();
-                vacationService.createVacation(vacation);
-                System.out.println("vacation added");
-
+                catch (Exception e) {
+                    System.out.println("no id found");
+                }
             }
+
             else if (option == 6){
                 VacationService vacationService = new VacationService();
                 vacationService.showAllVacation();
-
             }
+
+            else if (option == 7){
+                System.out.println("present vacation : \n");
+                VacationService vacationService = new VacationService();
+                vacationService.showAllVacation();
+
+                System.out.println("\nplease select which record change the state");
+                int recordNumber = scanner.nextInt();
+                System.out.println("for Confirmed the Vacation State press : 1 \n" +
+                        "for Unconfirmed the Vacation State press : 2");
+
+                int changeState = scanner.nextInt();
+                if (changeState == 1) {
+                    vacationService.confirmVacationState(recordNumber);
+                }
+                else if (changeState == 2) {
+
+                    vacationService.unConfirmVacationState(recordNumber);
+                }
+                else
+                    System.out.println("please enter correct value");
+
+                System.out.println("present vacation : \n");
+                vacationService.showAllVacation();
+            }
+
             else if (option == 8){
 
                System.exit(0);

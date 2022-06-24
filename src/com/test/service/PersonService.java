@@ -1,5 +1,6 @@
 package com.test.service;
 
+import com.test.dao.DataStore;
 import com.test.dao.PersonDao;
 import com.test.entity.Person;
 
@@ -30,6 +31,18 @@ public void showAll(){
         System.out.println("delete person");
     }
 
+    public Person getNameFamily(int id) {
+
+        PersonDao personDao = new PersonDao();
+        for (Person p : personDao.findAll())
+            if (id == p.getPersonId()) {
+
+                Person person = new Person(id, p.getName(), p.getLastName());
+                return person;
+            }
+
+        return null;
+    }
     public void searchPersonByID(int id){
 
     PersonDao personDao = new PersonDao();
