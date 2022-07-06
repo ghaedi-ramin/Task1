@@ -2,7 +2,6 @@ package com.test.service;
 
 import com.test.dao.PersonDao;
 import com.test.dao.VacationDao;
-import com.test.entity.Person;
 import com.test.entity.Vacation;
 
 import java.util.*;
@@ -33,7 +32,9 @@ public class VacationService {
 
         VacationDao vacationDao = new VacationDao();
         for (Vacation v : vacationDao.findAll()) {
-            System.out.println(v.getDate() + " " +v.getDuration() + " " + v.getPerson().getPersonId() + " "+ v.getPerson().getName() + " " + v.getPerson().getLastName() + " " + v.getState());
+            System.out.println(v.getDate() + " " +v.getDuration() + " " +
+                    v.getPerson().getPersonId() + " "+ v.getPerson().getName() + " " +
+                    v.getPerson().getLastName() + " " + v.getState());
         }
     }
 
@@ -60,7 +61,7 @@ public class VacationService {
         List<Vacation> vacationList = vacationDao.findAll();
 
         for (Vacation v:vacationList) {
-//   after override hashcod && equal
+//   after override hashcode() && equal()
             if(v.equals(vacation))
             {
                 return false;
