@@ -14,4 +14,5 @@ public class VacationDao {
         return DataStore.findAllVacation();
     }
 
+
 }

@@ -119,7 +119,7 @@ public class Main {
                     Vacation vacation = new Vacation(localDate, duration, person1 , vacationState);
                     VacationService vacationService = new VacationService();
                     vacationService.createVacation(vacation);
-                    System.out.println("vacation added");
+//                    System.out.println("vacation added");
                 }
 
                 catch (Exception e) {

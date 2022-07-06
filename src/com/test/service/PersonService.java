@@ -66,7 +66,8 @@ public void showAll(){
         List<Person> personList = personnelDao.findAll();
 
         for (Person p:personList) {
-            if (p.getPersonId() == (person.getPersonId()))
+//   after override hashcod && equal //if (p.getPersonId() == (person.getPersonId()))
+            if(p.equals(person))
                  {
                 return false;
             }

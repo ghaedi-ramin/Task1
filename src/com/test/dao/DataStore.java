@@ -31,15 +31,6 @@ public class DataStore {
         return personList;
     }
 
-//public static List<Person> findByFamily(){
-//        return personList;
-//}
-//
-//public static List<Person> findById(int id){
-//
-//        return personList;
-//}
-
     public static void AddVacation(Vacation vacation){
         vacationList.add(vacation);
     }

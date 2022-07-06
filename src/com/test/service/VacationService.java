@@ -2,6 +2,7 @@ package com.test.service;
 
 import com.test.dao.PersonDao;
 import com.test.dao.VacationDao;
+import com.test.entity.Person;
 import com.test.entity.Vacation;
 
 import java.util.*;
@@ -13,9 +14,17 @@ public class VacationService {
         PersonDao personDao = new PersonDao();
         Iterator iterator = personDao.findAll().iterator();
         if (iterator.hasNext()) {
-            VacationDao vacationDao = new VacationDao();
-            vacationDao.create(vacation);
 
+            if (canSaveVacation(vacation)){
+
+                VacationDao vacationDao = new VacationDao();
+                vacationDao.create(vacation);
+
+                System.out.println("vacation added");
+            }
+            else {
+                System.out.println("the duplicated vacation");
+            }
         }
         else
             System.out.println("no person to request vacation");
@@ -46,5 +55,18 @@ public class VacationService {
             v.setState(Vacation.VacationState.UNCONFIRMED);
         }
     }
+    private boolean canSaveVacation(Vacation vacation) {
+        VacationDao vacationDao = new VacationDao();
+        List<Vacation> vacationList = vacationDao.findAll();
 
+        for (Vacation v:vacationList) {
+//   after override hashcod && equal
+            if(v.equals(vacation))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

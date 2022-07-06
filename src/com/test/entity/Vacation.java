@@ -3,14 +3,13 @@ package com.test.entity;
 import com.test.dao.VacationDao;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Vacation {
 
     public enum VacationState{
 
         UNCHECK,CONFIRMED,UNCONFIRMED;
-
-
 
     }
 
@@ -57,5 +56,22 @@ public class Vacation {
 
     public void setState(VacationState state) {
         this.state = state;
+    }
+
+
+    //  ------------- after override equals & hashcode -------------
+    //  ------------- no duplicated in date & person   -------------
+    @Override
+    public boolean equals(Object o){
+        if (this == o ) return true;
+        if(o == null || getClass()!=o.getClass())
+            return false;
+        Vacation vacation = (Vacation) o;
+        return Objects.equals(date,vacation.date)
+                && Objects.equals(person,vacation.person);
+    }
+    @Override
+    public int hashCode(){
+        return Objects.hash(date,person);
     }
 }

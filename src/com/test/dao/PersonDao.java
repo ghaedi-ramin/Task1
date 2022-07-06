@@ -21,12 +21,4 @@ public class PersonDao {
         return DataStore.findAll();
     }
 
-//    public List<Person> searchByFamily() {
-//        return DataStore.findByFamily();
-//    }
-//
-//    public List<Person> searchById(int id) {
-//        return DataStore.findById(id);
-//
-//    }
 }

@@ -1,5 +1,7 @@
 package com.test.entity;
 
+import java.util.Objects;
+
 public class Person {
     private int personId;
     private String firstName;
@@ -39,5 +41,19 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+//  ------------- after override equals & hashcode -------------
+    @Override
+    public boolean equals(Object o){
+        if (this == o ) return true;
+        if(o == null || getClass()!=o.getClass())
+            return false;
+        Person person = (Person) o;
+        return personId == person.personId;
+    }
+    @Override
+    public int hashCode(){
+        return Objects.hash(personId);
     }
 }
